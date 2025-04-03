@@ -45,5 +45,9 @@ docs/
 # translation temp files
 po/*~
 
+# Encuesta CASEN en .sav
+/encuestas/CASEN/Base de datos Casen 2022 SPSS_18 marzo 2024.sav
+
+
 # RStudio Connect folder
 rsconnect/
