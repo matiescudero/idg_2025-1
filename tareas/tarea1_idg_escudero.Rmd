@@ -1,0 +1,45 @@
+---
+title: "Análisis Ingreso CASEN"
+author: "Matías Escudero"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+# Introducción
+
+Este documento presenta un **análisis descriptivo** del ingreso total del hogar utilizando los datos de la CASEN 2022.
+
+# Procesamiento de Datos
+
+En primer lugar se cargam las librerías necesarias
+
+```{r librerias, message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+Luego, cargamos el dataset de la CASEN en la RM
+
+```{r}
+ruta_rds = "../data/casen_rm.rds"
+casen_rm = readRDS(ruta_rds)
+```
+
+## Análisis Exploratorio
+
+Vemos un resumen de el ingreso
+
+```{r}
+summary(casen_rm$ypc)
+```
+
+## El promedio de ingreso para este dataset es de `r mean(casen_rm$ypc, na.rm = TRUE)` .
+
+😎
+
+Para visualizar mejor hacemos un histograma
+
+```{r echo=FALSE}
+hist(casen_rm$ypc,
+     xlab = "Ingreso Per Cápita",
+     col = "lightblue")
+```
