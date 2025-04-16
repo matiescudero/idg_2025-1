@@ -1,0 +1,50 @@
+---
+title: "Análisis Ingreso CASEN"
+author: "Matías Escudero"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{=html}
+<!--
+---
+title: "md_ejemplo"
+output: html_document
+---
+-->
+```
+
+# Introducción
+
+Este documento presenta un análisis descriptivo del ingreso total corregido del hogar (`ytotcorh`) utilizando los datos de la Encuesta CASEN 2022. También se estudia su relación con la escolaridad.
+
+# Procesamiento Datos
+
+En primer lugar, se cargan las librerías necesarias:
+
+```{r librerias, message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+Luego, cargamos el dataset de la casen de la RM
+
+```{r}
+ruta_rds = "../data/casen_rm.rds"
+casen_rm = readRDS(ruta_rds)
+```
+
+Vamos con un análisis exploratorio de una de las columnas a modo de ejemplo:
+
+```{r}
+summary(casen_rm$ypc)
+```
+
+El promedio de ingreso para la rm es de `r mean(casen_rm$ypc, na.rm = TRUE)`
+
+Para ver mejor esto, visualizamos un histograma
+
+```{r echo=FALSE}
+hist(casen_rm$ypc,
+     xlab = "Ingreso Per Cápita",
+     col = "lightblue")
+```
